@@ -974,33 +974,6 @@
                   </div>
                 </div>
               </form>
-
-              <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                const form = document.querySelector('.php-email-form');
-                const sentMessage = form.querySelector('.sent-message');
-                
-                // Настраиваем стили сообщения
-                sentMessage.style.display = 'none';
-                sentMessage.style.padding = '12px';
-                sentMessage.style.margin = '10px 0';
-                sentMessage.style.borderRadius = '4px';
-                sentMessage.style.backgroundColor = '#e6ffed'; // светлый зеленый фон
-                sentMessage.style.color = '#22863a'; // темный зеленый текст
-                sentMessage.style.border = '1px solid #b3e6b3';
-                sentMessage.style.textAlign = 'center';
-                sentMessage.textContent = 'The message was sent successfully. Thank you.';
-
-                form.addEventListener('submit', function(e) {
-                  // Показываем сообщение сразу при отправке
-                  sentMessage.style.display = 'block';
-                  
-                  // Форма отправится сама через Formspree
-                  // Ответ {"next":"/thanks?language=es","ok":true} будет проигнорирован
-                  // и заменен нашим сообщением
-                });
-              });
-              </script>
               
             </div>
           </div>
