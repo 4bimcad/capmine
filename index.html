@@ -978,56 +978,26 @@
               <script>
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('.php-email-form');
-  const loading = form.querySelector('.loading');
   const sentMessage = form.querySelector('.sent-message');
-  const submitButton = form.querySelector('.btn-submit');
-
-  // Стилизуем сообщение через JavaScript (или лучше добавить эти стили в CSS)
+  
+  // Настраиваем стили сообщения
   sentMessage.style.display = 'none';
-  sentMessage.style.padding = '15px';
-  sentMessage.style.margin = '15px 0';
-  sentMessage.style.borderRadius = '5px';
-  sentMessage.style.backgroundColor = '#d4edda'; // Светло-зеленый фон
-  sentMessage.style.color = '#155724'; // Темно-зеленый текст
+  sentMessage.style.padding = '12px';
+  sentMessage.style.margin = '10px 0';
+  sentMessage.style.borderRadius = '4px';
+  sentMessage.style.backgroundColor = '#e6ffed'; // светлый зеленый фон
+  sentMessage.style.color = '#22863a'; // темный зеленый текст
+  sentMessage.style.border = '1px solid #b3e6b3';
   sentMessage.style.textAlign = 'center';
-  sentMessage.style.fontWeight = 'bold';
   sentMessage.textContent = 'The message was sent successfully. Thank you.';
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+  form.addEventListener('submit', function(e) {
+    // Показываем сообщение сразу при отправке
+    sentMessage.style.display = 'block';
     
-    // Показываем индикатор загрузки
-    loading.style.display = 'block';
-    sentMessage.style.display = 'none';
-    submitButton.disabled = true;
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      
-      const result = await response.json();
-      
-      if (result.ok) {
-        // Скрываем индикатор загрузки и показываем успешное сообщение
-        loading.style.display = 'none';
-        sentMessage.style.display = 'block';
-        form.reset(); // Очищаем форму
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      loading.style.display = 'none';
-      sentMessage.textContent = 'Error sending message. Please try again.';
-      sentMessage.style.backgroundColor = '#f8d7da'; // Красный для ошибки
-      sentMessage.style.color = '#721c24';
-      sentMessage.style.display = 'block';
-    } finally {
-      submitButton.disabled = false;
-    }
+    // Форма отправится сама через Formspree
+    // Ответ {"next":"/thanks?language=es","ok":true} будет проигнорирован
+    // и заменен нашим сообщением
   });
 });
 </script>
