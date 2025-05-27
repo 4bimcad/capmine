@@ -975,27 +975,7 @@
                 </div>
               </form>
 
-              <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                const form = document.querySelector('.php-email-form');
-                const sentMessage = form.querySelector('.sent-message');
-                
-                // Скрываем сообщение изначально
-                sentMessage.style.display = 'none';
-                
-                form.addEventListener('submit', function(e) {
-                  // Показываем сообщение при отправке формы
-                  sentMessage.style.display = 'block';
-                  sentMessage.style.color = 'green';
-                  sentMessage.style.padding = '10px';
-                  sentMessage.style.margin = '10px 0';
-                  sentMessage.style.borderRadius = '4px';
-                  sentMessage.style.backgroundColor = '#d4edda';
-                  
-                  // Форма отправится сама через Formspree
-                });
-              });
-              </script>
+              
             </div>
           </div>
         </div>
